@@ -21,10 +21,12 @@ def filter(filename):
 
             # when we reach the next packet, check for the next line and tokenize
             if stripped and stripped[0] == "No.":
-                data = next(file).strip().split()
+                data_line = next(file)
 
-                if data[PROTOCOL_INDEX] == "ICMP" and data[INFO_INDEX] == "Echo":
-                    print(data)
+                tokenized_data = data_line.strip().split()
+
+                if tokenized_data[PROTOCOL_INDEX] == "ICMP" and tokenized_data[INFO_INDEX] == "Echo":
+                    print(tokenized_data)
                     time.sleep(0.5)
                 
                 
