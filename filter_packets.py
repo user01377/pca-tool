@@ -27,6 +27,11 @@ def filter(filename):
 
                 tokenized_data = data_line.strip().split()
 
+                """
+                if type is ICMP and the info contains ECHO (this is to filter out the destination unreachable packets)
+                write the header line, data line, and empty line that we already parsed through earlier to check if it is a valid packet
+                then run a for however long the binary is, write the write of that packet until we reach an empty string.
+                """
                 if tokenized_data[PROTOCOL_INDEX] == "ICMP" and tokenized_data[INFO_INDEX] == "Echo":
                     with open(new_name, "a") as new_file:
                         new_file.write(header)
@@ -44,4 +49,4 @@ def filter(filename):
 if __name__ == "__main__":
     print(f"RUNNING FOR NODE 1")
 
-    filter("./Captures/Node1.txt")
+    filter("./Captures/Node1.txt") # HARD CODED TO RUN NODE1.TXT, WILL FIX LATER
