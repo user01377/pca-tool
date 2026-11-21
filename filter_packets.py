@@ -14,10 +14,12 @@ def new_filename(filename):
     return f"Node{int(NODE_NUM)}_filtered.txt"
 
 def filter(filename):
+    new_name = new_filename(filename)
     
     with open(filename) as file:
         for line in file:
-            stripped = line.strip().split()
+            header = line
+            stripped = header.strip().split()
 
             # when we reach the next packet, check for the next line and tokenize
             if stripped and stripped[0] == "No.":
@@ -26,11 +28,18 @@ def filter(filename):
                 tokenized_data = data_line.strip().split()
 
                 if tokenized_data[PROTOCOL_INDEX] == "ICMP" and tokenized_data[INFO_INDEX] == "Echo":
-                    print(tokenized_data)
-                    time.sleep(0.5)
-                
-                
+                    with open(new_name, "a") as new_file:
+                        new_file.write(header)
+                        new_file.write(data_line)
+                        new_file.write(next(file))
 
+                        next_line = next(file)
+                        while next_line.strip():
+                            new_file.write(next_line)
+
+                            next_line = file.readline()
+
+                        new_file.write("\n")
 
 if __name__ == "__main__":
     print(f"RUNNING FOR NODE 1")
