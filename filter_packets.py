@@ -47,6 +47,6 @@ def filter(filename):
                         new_file.write("\n")
 
 if __name__ == "__main__":
-    print(f"RUNNING FOR NODE 1")
+    print(f"running filter() for Node1.txt")
 
     filter("./Captures/Node1.txt") # HARD CODED TO RUN NODE1.TXT, WILL FIX LATER
