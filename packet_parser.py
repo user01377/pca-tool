@@ -1,13 +1,26 @@
 #!/bin/python
 
+def create_dict(data: list):
+    pass
+
 
 def parse(filename: str):
     """
     the return data is a list[dict], where each dict in the list is an
     individual packet that was parsed from the NodeX_filtered.txt
     """
+
+    parsed_packets = []
+
     with open(filename) as file:
-        return "file opened"
+        for line in file:
+            header = line
+            stripped = header.strip().split()
+
+            if stripped and stripped[0] == "No.":
+                data_line = next(file)
+
+                tokenized_data = data_line.strip().split()
 
 
 if __name__ == "__main__":
