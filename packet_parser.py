@@ -54,6 +54,13 @@ if __name__ == "__main__":
     this main is set to parse through the Node1_filtered.txt
     running the "filter_packets.py" file will create this file.
     """
-    print("parsing through Node1_filtered.txt")
+    print("parsing through Node1_filtered.txt\n")
 
-    print(f"Returned data:\n{parse("./Node1_filtered.txt")}")
+    data = parse("./Node1_filtered.txt")
+
+    assert type(data) == list
+    print("parse data type return check passed\n")
+
+    print("\nPrinting the first 10 packets in the list..")
+    for i in range(10):
+        print(data[i])
