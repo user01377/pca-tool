@@ -1,7 +1,22 @@
 #!/bin/python
 
+import time
+
 def create_dict(data: list):
-    pass
+    info_list = data[6:]
+    info_str = " ".join(info_list)
+
+    data_dict = {
+        "No.": data[0],
+        "Time": data[1],
+        "Source": data[2],
+        "Destination": data[3],
+        "Protocol": data[4],
+        "Length": data[5],
+        "Info": info_str
+    }
+
+    return data_dict
 
 
 def parse(filename: str):
@@ -22,6 +37,10 @@ def parse(filename: str):
 
                 tokenized_data = data_line.strip().split()
 
+                # append dicts created from create_dict() helper onto parsed_packets list
+                parsed_packets.append(create_dict(tokenized_data))
+
+    return parsed_packets
 
 if __name__ == "__main__":
     """
