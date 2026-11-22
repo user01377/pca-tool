@@ -1,7 +1,11 @@
 #!/bin/python
 
 
-def parse(filename):
+def parse(filename: str):
+    """
+    the return data is a list[dict], where each dict in the list is an
+    individual packet that was parsed from the NodeX_filtered.txt
+    """
     with open(filename) as file:
         return "file opened"
 
