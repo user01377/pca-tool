@@ -3,6 +3,13 @@
 import time
 
 def create_dict(data: list):
+    """
+    this is the helper function that creates the python dictionaries
+    that go inside of the list that the parse() function returns
+
+    data is structured inside of the dictionary so that the keys
+    match the packet header names inside of the real NodeX_filtered.txt file
+    """
     info_list = data[6:]
     info_str = " ".join(info_list)
 
