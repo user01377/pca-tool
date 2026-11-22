@@ -1,16 +1,16 @@
 #!/bin/python
 
 
-def parse(data: list):
-    print("called parse function in packet_parser.py")
-    # simple example: convert letter to value in alphabet
-    return [ord(c) - ord("A") + 1 for c in data]
+def parse(filename):
+    with open(filename) as file:
+        return "file opened"
 
 
 if __name__ == "__main__":
-    print("running test code")
-    test_data = list("ABCDEF")
-    print(f"{test_data=}")
-    print(f"{parse(test_data)=}")
-    # Verify method still works
-    assert parse(test_data) == [1, 2, 3, 4, 5, 6]
+    """
+    this main is set to parse through the Node1_filtered.txt
+    running the "filter_packets.py" file will create this file.
+    """
+    print("parsing through Node1_filtered.txt")
+
+    print(f"Returned data:\n{parse("./Node1_filtered.txt")}")
