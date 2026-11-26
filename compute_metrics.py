@@ -1,9 +1,32 @@
 #!/bin/python
 
 
-def compute(data: list[str]):
+def compute(data: list[str], node_sum: int=1):
     print("called compute function in compute_metrics.py")
     # simple example: compute count, mean, min, max
+
+    requests_sent = 0
+    requests_received = 0
+    replies_sent = 0
+    replies_received = 0
+
+    req_sent = 0
+    req_received = 0
+    req_sent = 0
+    req_received = 0
+    
+    rtt_list = []
+    reply_delay = []
+    hop_counts = []
+
+    requests_map = {}
+
+    node_ips = {1: "192.168.100.1", 2: "192.168.100.2", 3: "192.168.100.1", 4: "192.168.100.2"}
+    node_ip = node_ips.get(node_num, "192.168.100.1")
+
+    for pkt in data:
+        src = pkt.get("source")
+
     return {
         "count": len(data),
         "mean": round(sum(data) / len(data), 2),
